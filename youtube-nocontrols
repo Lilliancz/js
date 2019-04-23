@@ -1,0 +1,31 @@
+Please take a break by watching the video:&nbsp;<div><br></div><div><br></div>
+<style>
+
+#container {text-align:center;
+} 
+
+#video {pointer-events:none;
+} 
+
+#mask {position:absolute; 
+top: 100; 
+left:0;
+width : 100%; 
+height:130px; 
+background-color: white
+} 
+#mask2 {position:absolute; 
+top: 550px; 
+left:0;
+width : 100%; 
+height:200px; 
+background-color: white
+} 
+</style>
+
+<div id = container>
+<div id = mask>&nbsp;</div>
+<div id = mask2>&nbsp;</div>
+<div id=video>
+<iframe width="600" height="600" src="https://www.youtube.com/embed/reQIWxID9JM?start=15&rel=0&autoplay=1&mute=0&controls=0&disablekb=1&modestbranding=1&showinfo=0&autohide=1" width="500px" height="650px" " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div>
