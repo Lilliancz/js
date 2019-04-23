@@ -1,0 +1,36 @@
+<style> .letter {padding:10px}
+.clicked {background-color:cyan} </style>
+<script><!-- 
+#changing color on clicks and counting number of clicks
+td.onclick 
+clicks = +1
+
+if odd
+background color = "grey"
+
+if even
+
+background color = "white"
+
+# counting the number of words found 
+if a1 and b1 and c1 are clicked, then HAT is 1 and number found +=1
+set embedded data to say which words are found and how many 
+
+# if embedded data is 5 then autosubmit next button
+
+# re-display what they have already found in second instance
+-->
+</script>
+
+<table>
+<tr><td class = "letter clicked" id = a1>H</td><td class = "letter" id = a2>A</td><td class = "letter" id = a3>T</td>
+<td class = "letter" id = b1>F</td><td class = "letter" id = b2>E</td><td class = "letter" id = b3>Y</td></tr>
+<tr><td class = "letter" id = c1>D</td><td class = "letter" id = c2>A</td><td class = "letter" id = c3>H</td>
+<td class = "letter clicked" id = a1>H</td><td class = "letter" id = a2>A</td><td class = "letter" id = a3>T</td></tr>
+<tr><td class = "letter" id = b1>F</td><td class = "letter" id = b2>E</td><td class = "letter" id = b3>Y</td>
+<td class = "letter" id = c1>D</td><td class = "letter" id = c2>A</td><td class = "letter" id = c3>H</td></tr>
+<tr><td class = "letter clicked" id = a1>H</td><td class = "letter" id = a2>A</td><td class = "letter" id = a3>T</td>
+<td class = "letter" id = b1>F</td><td class = "letter" id = b2>E</td><td class = "letter" id = b3>Y</td></tr>
+<tr><td class = "letter" id = c1>D</td><td class = "letter" id = c2>A</td><td class = "letter" id = c3>H</td>
+<td class = "letter" id = c1>D</td><td class = "letter" id = c2>A</td><td class = "letter" id = c3>H</td></tr>
+</table>
