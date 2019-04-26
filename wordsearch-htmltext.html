@@ -1,0 +1,52 @@
+//this stuff goes into the actual HTML of the question
+
+<div id=wordsearch>&nbsp;</div>
+
+<div id="wordsfound">Words found: <span id="numberwordsfound"></span> <br>
+    <div id="birthday" style="display:none">birthday</div>
+    <div id="detective" style="display:none">detective</div>
+    <div id="polite" style="display:none">polite</div>
+    <div id="superficial" style="display:none">superficial</div>
+    <div id="station" style="display:none">station</div>
+    <div id="available" style="display:none">available</div>
+    <div id="beneficial" style="display:none">beneficial</div>
+    <div id="program" style="display:none">program</div>
+    <div id="reflect" style="display:none">reflect</div>
+    <div id="delicate" style="display:none">delicate</div>
+</div><br>
+
+
+<style>
+
+#wordsfound{
+    position:absolute;
+    top: 200px;
+    left: 700px;
+}
+
+#wordsearch{
+    position:relative;
+    top: 50px;
+    left: 0px;
+height: 600px;
+}
+
+
+.letter {
+ padding-left:6px;
+ padding-right:6px;
+ text-align: center;
+ }
+
+.checked {
+ background-color: cyan;
+ }
+
+td {
+ width:20px;
+height:10px;
+}
+
+#Plug{color:white;display:none !important;z-index:-99 !important}
+
+</style>

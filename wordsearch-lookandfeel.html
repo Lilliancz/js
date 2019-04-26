@@ -1,0 +1,50 @@
+<script>
+
+    function toggleColor(id) {
+        var x = document.getElementById(id);
+        //toggles color of background based on click
+        if (x.classList.contains("checked")) {
+            x.classList.remove("checked");
+            }
+        else {
+            x.classList.add("checked");
+        }
+        checkWords();
+    }
+
+    function checkWords() {
+        var birthday = ["A12","B12","C12","D12","E12","F12","G12","H12","birthday"];
+        var detective = ["A9","B8","C7","D6","E5","F4","G3","H2","I1","detective"];
+        var polite = ["I10","I11","I12","I13","I14","I15","polite"];
+        var station = ["C11","D12","E13","F14","G15","H16","I17","station"];
+        var superficial = ["G11","G10","G9","G8","G7","G6","G5","G4","G3","G2","G1","superficial"];
+        var available = ["L10","M10","N10","O10","P10","Q10","R10","S10","T10","available"];
+        var beneficial = ["K10","L9","M8","N7","O6","P5","Q4","R3","S2","T1","beneficial"];
+        var delicate = ["L11","M12","N13","O14","P15","Q16","R17","S18","delicate"];
+        var program = ["K1","K2","K3","K4","K5","K6","K7","program"];
+        var reflect = ["R1","Q2","P3","O4","N5","M6","L7","reflect"];
+
+        var array = [birthday,detective,polite,station,superficial,available,beneficial,delicate,program,reflect];
+        for (var i=0; i<array.length; i++) {
+            countLetters(array[i]);
+        }
+    }
+
+
+
+    function countLetters(word){
+        var counter = 0;
+        for (var i=0; i<word.length-1; i++) {
+            var y = document.getElementById(word[i]);
+            if (y.classList.contains("checked")) {
+                counter+=1;
+            }
+        }
+        if (counter === word.length-1) {
+            var x = document.getElementById(word[word.length-1]);
+            x.style.display = "block";
+            //alert("found")
+            //Qualtrics.SurveyEngine.setEmbeddedData(word[word.length-1],1);
+        }
+    }
+</script>

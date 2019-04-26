@@ -64,9 +64,9 @@ td {
 
     function countWords(){
         //counts these words
-        var words = ["birthday", "detective", "polite", "station", "superficial", "available", "beneficial", "delicate", "program", "reflect"];
+        var words = ["birthday", "detective", "polite", "station", "superficial"];
         var foundCount = 0;
-        //var continueCount = 5;
+        var continueCount = words.length;
         var foundWords = [];
         for (var i=0; i<words.length; i++) {
             var x = document.getElementById(words[i]);
@@ -77,9 +77,10 @@ td {
             }
         }
         document.getElementById("numberwordsfound").innerHTML = foundCount;
-        //if (foundCount == continueCount){
-        //    this.clickNextButton();
-        //}
+        if (foundCount === continueCount){
+            alert("all 5");
+            //this.clickNextButton();
+        }
     }
 
     function countLetters(word){
@@ -100,20 +101,22 @@ td {
 
 </script>
 
-<script><!-- set embedded data to say which words are found and how many
+<script><!--
+set embedded data to say which words are found and how many
 
 # if embedded data is 5 then autosubmit next button
 
 # re-display what they have already found in second instance
+still to be added
 -->
 
 </script>
 <div id = wordsfound>Words found: <span id=numberwordsfound></span> <BR>
-<div id="birthday" style="display:none">birthday</div>
-<div id="detective" style="display:none">detective</div>
-<div id="polite" style="display:none">polite</div>
-<div id="superficial" style="display:none">superficial</div>
-<div id="station" style="display:none">station</div>
+    <div id="birthday" style="display:none">birthday</div>
+    <div id="detective" style="display:none">detective</div>
+    <div id="polite" style="display:none">polite</div>
+    <div id="superficial" style="display:none">superficial</div>
+    <div id="station" style="display:none">station</div>
     <div id="available" style="display:none">available</div>
     <div id="beneficial" style="display:none">beneficial</div>
     <div id="program" style="display:none">program</div>
