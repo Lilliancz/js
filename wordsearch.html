@@ -48,29 +48,32 @@ td {
         var polite = ["I10","I11","I12","I13","I14","I15","polite"];
         var station = ["C11","D12","E13","F14","G15","H16","I17","station"];
         var superficial = ["G11","G10","G9","G8","G7","G6","G5","G4","G3","G2","G1","superficial"];
-        countLetters(birthday);
-        countLetters(detective);
-        countLetters(polite);
-        countLetters(station);
-        countLetters(superficial);
+        var available = ["L10","M10","N10","O10","P10","Q10","R10","S10","T10","available"];
+        var beneficial = ["K10","L9","M8","N7","O6","P5","Q4","R3","S2","T1","beneficial"];
+        var delicate = ["L11","M12","N13","O14","P15","Q16","R17","S18","delicate"];
+        var program = ["K1","K2","K3","K4","K5","K6","K7","program"];
+        var reflect = ["R1","Q2","P3","O4","N5","M6","L7","reflect"];
 
+        var array = [birthday,detective,polite,station,superficial,available,beneficial,delicate,program,reflect];
+        for (var i=0; i<array.length; i++) {
+            countLetters(array[i]);
+        }
         countWords();
     }
 
-
     function countWords(){
-        var words = ["birthday", "detective", "polite", "station", "superficial"];
+        var words = ["birthday", "detective", "polite", "station", "superficial", "available", "beneficial", "delicate", "program", "reflect"];
         var foundCount = 0;
         //var continueCount = 5;
         var foundWords = [];
         for (var i=0; i<words.length; i++) {
             var x = document.getElementById(words[i]);
             if (x.style.display === "block"){
+                //alert("foundcount = "+foundCount+"foundwords = "+foundWords);
                 foundCount +=1;
                 foundWords.push(words[i]);
             }
         }
-//        alert("foundcount = "+foundCount+"foundwords = "+foundWords);
         document.getElementById("numberwordsfound").innerHTML = foundCount;
         //if (foundCount == continueCount){
         //    this.clickNextButton();
@@ -88,27 +91,14 @@ td {
         if (counter === word.length-1) {
             var x = document.getElementById(word[word.length-1]);
             x.style.display = "block";
+            //alert("found")
             //Qualtrics.SurveyEngine.setEmbeddedData(word[word.length-1],1);
         }
     }
 
 </script>
 
-<script><!-- 
-#changing color on clicks and counting number of clicks
-td.onclick 
-clicks = +1
-
-if odd
-background color = "grey"
-
-if even
-
-background color = "white"
-
-# counting the number of words found 
-if a1 and b1 and c1 are clicked, then HAT is 1 and number found +=1
-set embedded data to say which words are found and how many 
+<script><!-- set embedded data to say which words are found and how many
 
 # if embedded data is 5 then autosubmit next button
 
@@ -122,6 +112,11 @@ set embedded data to say which words are found and how many
 <div id="polite" style="display:none">polite</div>
 <div id="superficial" style="display:none">superficial</div>
 <div id="station" style="display:none">station</div>
+    <div id="available" style="display:none">available</div>
+    <div id="beneficial" style="display:none">beneficial</div>
+    <div id="program" style="display:none">program</div>
+    <div id="reflect" style="display:none">reflect</div>
+    <div id="delicate" style="display:none">delicate</div>
 </div><BR>
 
 <div id=wordsearch><table>
