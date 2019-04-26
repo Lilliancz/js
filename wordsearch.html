@@ -33,6 +33,7 @@ td {
 <script>
     function toggleColor(id) {
         var x = document.getElementById(id);
+        //toggles color of background based on click
         if (x.classList.contains("checked")) {
             x.classList.remove("checked");
             }
@@ -62,6 +63,7 @@ td {
     }
 
     function countWords(){
+        //counts these words
         var words = ["birthday", "detective", "polite", "station", "superficial", "available", "beneficial", "delicate", "program", "reflect"];
         var foundCount = 0;
         //var continueCount = 5;
