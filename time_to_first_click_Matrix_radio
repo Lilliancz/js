@@ -1,0 +1,29 @@
+Qualtrics.SurveyEngine.addOnload(function()
+{
+	/*Place your JavaScript here to run when the page loads*/
+var time1 = new Date().getTime();
+Qualtrics.SurveyEngine.setEmbeddedData('time1', time1);
+//alert(time1);
+var firstClick = 1;
+	
+	this.questionclick = function(event,element)
+    {
+        //by default you get the click event as the first parameter and the clicked element as the second parameter
+        console.log(event, element);
+        if (element.type == 'radio')
+        {
+            //alert("radio clicked");
+			if (firstClick == 1)
+			{
+				var time2 = new Date().getTime();  
+				Qualtrics.SurveyEngine.setEmbeddedData('time2', time2);
+				timeDiff = time2-time1;
+				//alert("time 1 "+time1);
+				//alert("time 2 "+time2);
+				Qualtrics.SurveyEngine.setEmbeddedData('timeDiff', timeDiff );
+				//alert(timeDiff);
+				firstClick = 0;
+			}
+        }
+    }
+});
