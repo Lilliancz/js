@@ -1,5 +1,6 @@
 //this example changes the div image based on the choice value of a slider
 //the image changes whenever there is a click or mouse movement
+// the div with ID "self-other-image" must be located on the same page in the survey
 
 Qualtrics.SurveyEngine.addOnload(function()
 {
