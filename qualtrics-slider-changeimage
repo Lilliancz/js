@@ -1,6 +1,24 @@
 //this example changes the div image based on the choice value of a slider
+//the image changes whenever there is a click or mouse movement
+
+Qualtrics.SurveyEngine.addOnload(function()
+{
+
+var q = document.getElementById("QID2");
+	q.addEventListener("mousemove", function(){
+		var choice = parseInt(document.getElementById("QID2~4~true-result").value);
+		if (choice > 0){
+		document.getElementById('self-other-image').innerHTML = 
+			"<img src =http://umich.edu/~rosslab/self-other/Slide"+choice+".PNG>";
+		}
+	}, false);
+	
 this.questionclick = function(event,element) {
 	var choice = parseInt(document.getElementById("QID2~4~true-result").value);
+	if (choice > 0){
     document.getElementById('self-other-image').innerHTML = 
 		"<img src=http://umich.edu/~rosslab/self-other/Slide"+choice+".PNG>";
 	}
+	}
+	
+});
