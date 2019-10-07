@@ -1,0 +1,10 @@
+//thanks to 13bzhang for inspiration at gist.github.com/13bzhang/92be517b6558132c78620ad029c77f4d
+//this code takes all the inputs on the page into an array. 
+//For the 4th and 5th text entry boxes, the code below adds text after the box. 
+//you can also add text before the box by changing "after" to "before"
+
+var inputs = $(this.getQuestionContainer()).select('input[type="text"]');
+
+$(inputs[3]).insert({after: ' mm/dd/yy'});
+
+$(inputs[4]).insert({after: ' hour(s)'});
