@@ -1,0 +1,6 @@
+//this example changes the div image based on the choice value of a slider
+this.questionclick = function(event,element) {
+	var choice = parseInt(document.getElementById("QID2~4~true-result").value);
+    document.getElementById('self-other-image').innerHTML = 
+		"<img src=http://umich.edu/~rosslab/self-other/Slide"+choice+".PNG>";
+	}
