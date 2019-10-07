@@ -1,0 +1,8 @@
+//this version does the image change by mouseover. choppier animation.
+
+var q = document.getElementById("QID2~4~track");
+	q.addEventListener("mousemove", function(){
+		var choice = parseInt(document.getElementById("QID2~4~true-result").value);
+		document.getElementById('self-other-image').innerHTML = 
+			"<img src =http://umich.edu/~rosslab/self-other/Slide"+choice+".PNG>";
+	}, false);
