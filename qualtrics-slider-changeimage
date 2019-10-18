@@ -1,25 +1,34 @@
 //this example changes the div image based on the choice value of a slider
-//the image changes whenever there is a click or mouse movement
+//the image changes whenever there is a click or mouse movement and now with touch!
 // the div with ID "self-other-image" must be located on the same page in the survey
 
 Qualtrics.SurveyEngine.addOnload(function()
 {
+	/*Place your JavaScript here to run when the page loads*/
 
 var q = document.getElementById("QID2");
-	q.addEventListener("mousemove", function(){
-		var choice = parseInt(document.getElementById("QID2~4~true-result").value);
-		if (choice > 0){
-		document.getElementById('self-other-image').innerHTML = 
-			"<img src =http://umich.edu/~rosslab/self-other/Slide"+choice+".PNG>";
-		}
-	}, false);
+var x = init();	
 	
-this.questionclick = function(event,element) {
+function touchHandler(event)
+{
+	//alert("it fired");
 	var choice = parseInt(document.getElementById("QID2~4~true-result").value);
-	if (choice > 0){
-    document.getElementById('self-other-image').innerHTML = 
-		"<img src=http://umich.edu/~rosslab/self-other/Slide"+choice+".PNG>";
+			if (choice > 0){
+			document.getElementById('self-other-image').innerHTML = 
+				"<img src =http://umich.edu/~rosslab/self-other/Slide"+choice+".PNG>";
 	}
-	}
+}
+	
+function init() 
+{
+    document.addEventListener("touchstart", touchHandler, true);
+    document.addEventListener("touchmove", touchHandler, true);
+    document.addEventListener("touchend", touchHandler, true);
+    document.addEventListener("touchcancel", touchHandler, true);   
+    document.addEventListener("mousemove", touchHandler, true);    
+    document.addEventListener("mousedown", touchHandler, true);    
+    document.addEventListener("mouseup", touchHandler, true);    
+}	
+	
 	
 });
