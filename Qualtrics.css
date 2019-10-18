@@ -1,0 +1,5 @@
+//fix position of a button
+
+.Skin #Buttons #NextButton {
+   position:fixed;bottom:1px;right:1px;
+   }
