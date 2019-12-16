@@ -1,0 +1,43 @@
+// need to add Qbegintime, Qendtime, and timeleft into the survey flow
+// this script needs to be located on a question on the same page as the task being timed
+
+
+
+Qualtrics.SurveyEngine.addOnload(function()
+{
+//This script records the time in ms for the beginning of the page load
+	/*Place your JavaScript here to run when the page loads*/
+	var Qbegintime = new Date();
+	Qbegintime = Qbegintime.getTime()
+	Qualtrics.SurveyEngine.setEmbeddedData('Qbegintime', Qbegintime);
+
+
+});
+
+Qualtrics.SurveyEngine.addOnReady(function()
+{
+	/*Place your JavaScript here to run when the page is fully displayed*/
+  //this code pulls the time left from embedded data
+	var timeleft = "${e://Field/timeleft}";
+  //it will be a string unless you parse as a float
+	timeleft = parseFloat(timeleft);
+	if ("${e://Field/testing}"==1) { alert(timeleft + "at beginning")}
+
+//this code sets a timer to click the nextbutton if the time left has been reached
+var x = setTimeout(function(){  $('NextButton').click(); }, timeleft);
+	
+	//this code clears the timer, records and saves the end time of the page in ms
+			$("NextButton").on("click", function(event) 
+				{ 
+					var clr = clearTimeout(x);
+	var Qendtime = new Date();
+	Qendtime = Qendtime.getTime()
+Qualtrics.SurveyEngine.setEmbeddedData('Qendtime', Qendtime);
+				}); 
+});
+
+Qualtrics.SurveyEngine.addOnUnload(function()
+{
+	/*Place your JavaScript here to run when the page is unloaded*/
+
+});
