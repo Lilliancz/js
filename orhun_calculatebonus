@@ -1,0 +1,25 @@
+var bonus = 0;
+var diff = -99;
+var guesses = ["${q://QID8/TotalSum}","${q://QID10/TotalSum}","${q://QID11/TotalSum}","${q://QID47/TotalSum}","${q://QID49/TotalSum}","${q://QID50/TotalSum}","${q://QID109/TotalSum}"]
+var actual = [-.006, .422,-.262,-.33,-.3244,-.395,-.075];
+var choices = ["${q://QID8/ChoiceGroup/ChoiceWithHighestValue}","${q://QID10/ChoiceGroup/ChoiceWithHighestValue}","${q://QID11/ChoiceGroup/ChoiceWithHighestValue}","${q://QID47/ChoiceGroup/ChoiceWithHighestValue}","${q://QID49/ChoiceGroup/ChoiceWithHighestValue}","${q://QID50/ChoiceGroup/ChoiceWithHighestValue}",
+			   "${q://QID109/ChoiceGroup/ChoiceWithHighestValue}"];
+var rand = "${e://Field/rand}";
+//alert(rand);
+
+//if the subject skipped the question, we don't calculate the bonus
+	if (choices[rand-1]!=""){
+		diff = guesses[rand-1] - actual[rand-1];
+			if (Math.abs(diff) <=.005){
+			bonus = 5;
+			} else if (Math.abs(diff) <=.1){
+			bonus = 2;
+			} else if (Math.abs(diff) <=.2){
+			bonus = 1;
+			}
+	}
+	
+//alert(diff);		
+//alert(bonus);
+Qualtrics.SurveyEngine.setEmbeddedData('diff', diff);
+Qualtrics.SurveyEngine.setEmbeddedData('bonus', bonus);
