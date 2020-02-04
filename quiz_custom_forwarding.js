@@ -21,6 +21,7 @@ Qualtrics.SurveyEngine.addOnload(function()
 	//hide the actual next button
 	this.hideNextButton();
 	
+
 	//when the fake next button is clicked, do something
 	jQuery('#CustomNextButton').on('click', function() {
 		var correct = document.getElementById(correct_QID);
@@ -31,8 +32,15 @@ Qualtrics.SurveyEngine.addOnload(function()
 			$('NextButton').click();
 		} 
 		
-		// if they already clicked next once and it was wrong, then just go forward
+		// if they already clicked next once and it was wrong, then show answer
 		else if (count == 1) {
+			//show explanation
+			document.getElementById("explanation").style.display="block";
+			count = count + 1;
+		}
+		
+		// if they already clicked twice and it was wrong, then just go forward
+		else if (count == 2) {
 			//reset count to 0
 			Qualtrics.SurveyEngine.setEmbeddedData('count', 0);
 			$('NextButton').click();
@@ -41,6 +49,7 @@ Qualtrics.SurveyEngine.addOnload(function()
 		//if it's their first time clicking next and it was wrong, just increment counter
 		else{
 			count = count + 1;
+			alert(count);
 			Qualtrics.SurveyEngine.setEmbeddedData('count', count);
 		} 
 	})
