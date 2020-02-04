@@ -1,4 +1,9 @@
 // you have to have set "count" to 0 previously in embedded data in order for the counting to work
+// this code assumes you have already created a question that displays in page for the correct answer
+// and also a question that displays in page for the incorrect answer.
+// it uses conditional logic depending on the visibility of the correct answer in-page question.
+
+
 
 Qualtrics.SurveyEngine.addOnload(function()
 {
