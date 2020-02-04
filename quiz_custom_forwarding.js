@@ -5,7 +5,7 @@ Qualtrics.SurveyEngine.addOnload(function()
 	/*Place your JavaScript here to run when the page loads*/
 	
   // get the QID of the question that displays when they get the right answer
-  // this is the only field that needs to change for each question
+  // this is the only variable that needs to change for each question
 	var correct_QID = "QID4";
 	
 	var count = parseInt(Qualtrics.SurveyEngine.getEmbeddedData('count'));
@@ -34,7 +34,7 @@ Qualtrics.SurveyEngine.addOnload(function()
 		
 		// if they already clicked next once and it was wrong, then show answer
 		else if (count == 1) {
-			//show explanation
+			//show explanation - this element needs to be specified on the page
 			document.getElementById("explanation").style.display="block";
 			count = count + 1;
 		}
@@ -49,7 +49,7 @@ Qualtrics.SurveyEngine.addOnload(function()
 		//if it's their first time clicking next and it was wrong, just increment counter
 		else{
 			count = count + 1;
-			alert(count);
+			//alert(count);
 			Qualtrics.SurveyEngine.setEmbeddedData('count', count);
 		} 
 	})
