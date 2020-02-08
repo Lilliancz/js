@@ -23,6 +23,7 @@ Qualtrics.SurveyEngine.addOnReady(function()
 		if ((one == correctAnswer1)&&(two == correctAnswer2)) {
 			document.getElementById("hint").style.display="none";
 			document.getElementById("correct").style.display="block";
+			document.getElementById("ShowAnswerButton").style.display="none";
 		} 
 		else {
 			document.getElementById("correct").style.display="none";
@@ -96,6 +97,7 @@ Qualtrics.SurveyEngine.addOnReady(function()
 		jQuery("#"+currentQuestionID+" .SumInput input").eq( 0 ).val(correctAnswer1);
 		jQuery("#"+currentQuestionID+" .SumInput input").eq( 1 ).val(correctAnswer2);
 		document.getElementById("hint").style.display="none";
+		document.getElementById("ShowAnswerButton").style.display="none";
 	})
 
 });
