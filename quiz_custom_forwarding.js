@@ -1,10 +1,10 @@
 // you have to have set "count" to 0 previously in embedded data in order for the counting to work
 // this code assumes you have already created a question that holds a hidden hint
-// <div id="hint" style="display:none">
+// <div id="hint" style="display:none"></div>
 // a placeholder for fake buttons <div id ="showbuttons"></div>
-// a placeholder for the hidden correct answer <div id="correct" style="display:none"
+// a placeholder for the hidden correct answer <div id="correct" style="display:none"></div>
 
-Qualtrics.SurveyEngine.addOnload(function()
+Qualtrics.SurveyEngine.addOnReady(function()
 {
 	
 //if there are 2 inputs for the question, all you need to do is update these 2 values. The rest can be left untouched.
@@ -91,10 +91,11 @@ Qualtrics.SurveyEngine.addOnload(function()
 		} 
 		})
 	
-		jQuery('#ShowAnswerButton').on('click', function() {
-			jQuery("#"+currentQuestionID+" .SumInput input").eq( 0 ).val(correctAnswer1);
-			jQuery("#"+currentQuestionID+" .SumInput input").eq( 1 ).val(correctAnswer2);
-			document.getElementById("hint").style.display="none";
-		})
-	
+	// if show answer clicked, hide hint and fill in correct answers
+	jQuery('#ShowAnswerButton').on('click', function() {
+		jQuery("#"+currentQuestionID+" .SumInput input").eq( 0 ).val(correctAnswer1);
+		jQuery("#"+currentQuestionID+" .SumInput input").eq( 1 ).val(correctAnswer2);
+		document.getElementById("hint").style.display="none";
+	})
+
 });
