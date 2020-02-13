@@ -1,4 +1,6 @@
 //this code presumes you have a DIV called "logup" and a DIV called "textTime" to show the timer text. 
+// a huge thanks to Šime Vidas who wrote the base code on
+// https://stackoverflow.com/questions/5766263/run-settimeout-only-when-tab-is-active
 
 Qualtrics.SurveyEngine.addOnload(function()
 {
