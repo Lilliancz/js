@@ -1,0 +1,100 @@
+// a huge thanks to Šime Vidas who wrote the base code on
+// https://stackoverflow.com/questions/5766263/run-settimeout-only-when-tab-is-active
+// to set the embedded data, you MUST preset the variables in the survey flow prior to the block
+// variables to set: socialSec, focalSec, autoLimit
+
+Qualtrics.SurveyEngine.addOnload(function()
+{
+	/*Place your JavaScript here to run when the page loads*/
+
+});
+Qualtrics.SurveyEngine.addOnload(function()
+{
+	/*Place your JavaScript here to run when the page loads*/
+
+});
+
+Qualtrics.SurveyEngine.addOnReady(function()
+{
+	
+var startTime = new Date().getTime() / 1000;	
+var nowTime;	
+var elapsedSec;	
+var socialSec;	
+var focalSec;
+
+//popup is whether we will have a delay popup
+var popup = 0;
+var delay = 0;
+//this delay is in seconds
+
+//whether there is a limit chosen or not
+var limit = "${e://Field/limit}"
+//alert("limit is " + limit);
+
+if (limit == 1){
+//use delay from previous question
+	delay = parseInt("${q://QID846/SelectedChoicesRecode}")
+	//alert(delay);
+	popup = 1;
+}
+	
+	var autoLimit = "${e://Field/autoLimit}";
+// the autoLimit is the number of seconds allowed for the entire question including focal and nonfocal tasks.
+// it is set in the survey flow
+	
+
+(function() {
+	//rate of data acquisition in ms is the delta
+  	var time = 0,	
+      		delta = 50,
+      		tid;
+
+  tid = setInterval(function() {
+	  
+	//get the time spent on the social tasks
+	socialSec = elapsedSec - time/1000; 
+	//if the focal task window is not focused, run this code
+	if ( document.hidden ) { 		  
+		  //if the social task duration exceeds the number, then pop up a new tab
+		  if (socialSec > delay && popup == 1){
+		  	var url = "https://umich.qualtrics.com/jfe/form/SV_9nMLFWoqyYBHhvD";
+		  	window.open(url, '_blank'); 
+		  	window.focus();
+		  	popup = 0;
+	  	}    
+	}
+    	//round to integer
+	socialSec = socialSec.toFixed(1);
+	//incremented time for each interval
+	time += delta;
+	  
+
+	focalSec = (time / 1000).toFixed(1);
+	//calculate elapsed time
+	nowTime = new Date().getTime() / 1000;	
+	elapsedSec = nowTime - startTime; 
+	  
+	  // if the responded has reached the limit for the entire question, stop the interval, 
+	  // record the data, and advance to the next question.
+	  if ( elapsedSec > autoLimit ){
+		  clearInterval(tid);
+		 Qualtrics.SurveyEngine.setEmbeddedData( 'socialSec', socialSec );
+		Qualtrics.SurveyEngine.setEmbeddedData( 'focalSec', focalSec );	
+		  	//if the focal task window is not focused, run this code
+	if ( document.hidden ) { 
+		  var url = "https://umich.qualtrics.com/jfe/form/SV_9nMLFWoqyYBHhvD";
+		  	window.open(url, '_blank'); 
+		window.focus();}
+	  }
+  }, delta);
+})();
+	
+	
+});
+
+Qualtrics.SurveyEngine.addOnUnload(function()
+{
+	/*Place your JavaScript here to run when the page is unloaded*/
+
+});
