@@ -62,22 +62,30 @@ Qualtrics.SurveyEngine.addOnReady(function()
 var timer = document.querySelector('#timer');
 var minutes;
 var seconds;
-	var reduce = 0;
+var reduce = 0;
+var clue1 = document.querySelector('#clue1');
+var clue2 = document.querySelector('#clue2');
+var clue3 = document.querySelector('#clue3');
+	var counter = 0;
 	
 (function() {
 	//rate of data acquisition in ms is the delta
-  	var time = 300000, delta = 1000,
+  	var time = 300000, //5 minutes total
+		delta = 1000, // 1 sec increments
       		tid;
 
   tid = setInterval(function() {	
+	  //count the actual seconds elapsed
+	  counter +=1;
+	time -= delta;
 	  
+	  //if a clue was clicked, then reduce the time 30 sec
 	if (reduce == 1)
 	{
 		time -= 30000; 
 		reduce = 0;
 	}
 	  
-	time -= delta;
     minutes = Math.floor(time / 60000);
 	seconds = (time % 60000)/1000;
 	if (seconds < 10) {seconds = "0"+seconds}
@@ -92,6 +100,16 @@ var seconds;
 		  $('NextButton').click();
 	  }
 	  
+	//display clues sequentially every minute
+	  if ( counter == 60 ){
+		  clue1.style.display = "block";
+	  } 	  	  
+	  if ( counter == 120 ){
+		  clue2.style.display = "block";
+	  } 	  	  
+	  if ( counter == 180 ){
+		  clue3.style.display = "block";
+	  } 
 	  
 document.getElementById("clue1").addEventListener("click", showclue1);	
 document.getElementById("clue2").addEventListener("click", showclue2);	
