@@ -1,0 +1,131 @@
+
+<style type="text/css">
+
+.clue { 
+position:fixed;
+width: 300px;
+right:0;
+padding:10px;
+border-radius: 25px;
+text-align:center;
+background-color:lightblue;
+}
+
+#clue1 {
+top:50px;
+   } 
+
+#clue2 {
+top:200px;
+} 
+
+#clue3 {
+top:350px;
+}
+
+#timer {
+display:none;
+position:fixed;
+top:50px;
+left:50px;
+font-size: 48px;
+background-color:lightgrey;
+padding: 50px;
+border-radius: 25px;
+}
+</style>
+
+<div id = "timer"></div>
+
+<div class="clue" id="clue1">Click to reveal the first clue. <br>You will lose 30 sec.<br>
+<button id="showclue1">Get Clue 1</button></div>
+
+<div class="clue" id="clue2">Click to reveal the second clue. <br>You will lose 30 sec.<br>
+<button id="showclue2">Get Clue 2</button></div>
+
+<div class="clue" id="clue3">Click to reveal the third clue. <br>You will lose 30 sec.<br>
+<button id="showclue3">Get Clue 3</button></div>
+
+
+
+<script>
+Qualtrics.SurveyEngine.addOnload(function()
+{
+	/*Place your JavaScript here to run when the page loads*/
+
+});
+
+
+Qualtrics.SurveyEngine.addOnReady(function()
+{
+	
+var timer = document.querySelector('#timer');
+var minutes;
+var seconds;
+	var reduce = 0;
+	
+(function() {
+	//rate of data acquisition in ms is the delta
+  	var time = 300000, delta = 1000,
+      		tid;
+
+  tid = setInterval(function() {	
+	  
+	if (reduce == 1)
+	{
+		time -= 30000; 
+		reduce = 0;
+	}
+	  
+	time -= delta;
+    minutes = Math.floor(time / 60000);
+	seconds = (time % 60000)/1000;
+	if (seconds < 10) {seconds = "0"+seconds}
+	timer.textContent = minutes + ":" + seconds ;
+	  timer.style.display = "block";
+	  
+	  // if the responded has reached the limit, stop the interval, 
+	  //  advance to the next question.
+	  if ( time < 0 ){
+		  clearInterval(tid);
+		  timer.style.display = "none";
+		  $('NextButton').click();
+	  }
+	  
+	  
+document.getElementById("clue1").addEventListener("click", showclue1);	
+document.getElementById("clue2").addEventListener("click", showclue2);	
+document.getElementById("clue3").addEventListener("click", showclue3);	
+
+	function showclue1(){
+	document.getElementById("clue1").innerHTML = "Clue 1: Find sets of letters that go together (i.e. 'sh', 'ch') and double letters";
+	Qualtrics.SurveyEngine.setEmbeddedData('showclue1', 1 );
+		reduce = 1;
+	}
+	
+	function showclue2(){
+	document.getElementById("clue2").innerHTML = "Clue 2: Remember to repeat letters, including the center letter";
+	Qualtrics.SurveyEngine.setEmbeddedData('showclue2', 1 );
+		reduce = 1;
+	}
+	
+	function showclue3(){
+	document.getElementById("clue3").innerHTML = "Clue 3: Think about words that rhyme or sound similar";
+	Qualtrics.SurveyEngine.setEmbeddedData('showclue3', 1 );
+		reduce = 1;
+	}
+	  
+  }, delta);
+	
+})();
+	
+	
+		
+});
+
+Qualtrics.SurveyEngine.addOnUnload(function()
+{
+	/*Place your JavaScript here to run when the page is unloaded*/
+
+});
+</script>
