@@ -115,26 +115,27 @@ document.getElementById("clue1").addEventListener("click", showclue1);
 document.getElementById("clue2").addEventListener("click", showclue2);	
 document.getElementById("clue3").addEventListener("click", showclue3);	
 
+
+	  //if the button is clicked, show the clue and save the time it was clicked as embedded data
 	function showclue1(){
-	document.getElementById("clue1").innerHTML = "Clue 1: Find sets of letters that go together (i.e. 'sh', 'ch') and double letters";
-	Qualtrics.SurveyEngine.setEmbeddedData('showclue1', 1 );
+	document.getElementById("clue1").innerHTML = "Clue 1: Delivery D occurs on the first day";
+	Qualtrics.SurveyEngine.setEmbeddedData('showclue1', counter );
 		reduce = 1;
 	}
 	
 	function showclue2(){
-	document.getElementById("clue2").innerHTML = "Clue 2: Remember to repeat letters, including the center letter";
-	Qualtrics.SurveyEngine.setEmbeddedData('showclue2', 1 );
+	document.getElementById("clue2").innerHTML = "Clue 2: Delivery B occurs on the fifth day";
+	Qualtrics.SurveyEngine.setEmbeddedData('showclue2', counter );
 		reduce = 1;
 	}
 	
 	function showclue3(){
-	document.getElementById("clue3").innerHTML = "Clue 3: Think about words that rhyme or sound similar";
-	Qualtrics.SurveyEngine.setEmbeddedData('showclue3', 1 );
+	document.getElementById("clue3").innerHTML = "Clue 3: Delivery C occurs on the third day";
+	Qualtrics.SurveyEngine.setEmbeddedData('showclue3', counter );
 		reduce = 1;
 	}
 	  
   }, delta);
-	
 })();
 	
 	
