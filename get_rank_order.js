@@ -1,3 +1,6 @@
+//thanks to the anonymous user on Qualtrics community for the rank order jquery code
+// https://www.qualtrics.com/community/discussion/1880/create-weights-in-javascript-based-on-ranking-question
+
 Qualtrics.SurveyEngine.addOnload(function()
 {
 	/*Place your JavaScript here to run when the page loads*/
