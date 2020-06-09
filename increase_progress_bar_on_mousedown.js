@@ -17,6 +17,7 @@ Qualtrics.SurveyEngine.addOnload(function()
 			document.getElementById("counter").innerHTML = counter;
 			myWidth = counter *5;
 			document.getElementById("progressbar").style.width = myWidth+"px";
+			Qualtrics.SurveyEngine.setEmbeddedData( 'counter', counter);
 
 			myTimeout = setTimeout(function () {
 			myInterval = setInterval(function () {
@@ -24,7 +25,8 @@ Qualtrics.SurveyEngine.addOnload(function()
 						counter++;
 						document.getElementById("counter").innerHTML = counter;			
 						myWidth = counter *5;
-						document.getElementById("progressbar").style.width = myWidth+"px";
+						document.getElementById("progressbar").style.width = myWidth+"px";				
+						Qualtrics.SurveyEngine.setEmbeddedData( 'counter', counter);
 					}
 				}, 75);
 			}, 500);
@@ -47,6 +49,7 @@ Qualtrics.SurveyEngine.addOnload(function()
 		document.getElementById("counter").innerHTML = counter;			
 		myWidth = counter *5;
 		document.getElementById("progressbar").style.width = myWidth+"px";
+		Qualtrics.SurveyEngine.setEmbeddedData( 'counter', counter);
 	}
 	
   
