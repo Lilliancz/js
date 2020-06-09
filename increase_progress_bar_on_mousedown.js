@@ -1,4 +1,5 @@
 //enter the script below into the javascript of qualtrics question
+//make sure to put the "counter" embedded data in survey flow before this question appears
 
 Qualtrics.SurveyEngine.addOnload(function()
 {
