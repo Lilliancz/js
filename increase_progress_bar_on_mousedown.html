@@ -1,13 +1,29 @@
-<div id="controller"><button id="mybutton" type="button">Press and hold this button to increase the size of the bar below.</button></div><BR><BR>
+<div id="controller">
+<button id="myButton" type="button">Press and hold this button to increase the size of the bar below</button>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button id="clearButton" type="button">Start Over</button>
+</div>
 
+<BR>
+<BR>
+
+<div id=container>
 <div id="progressbar">
-    <div id="counter">50</div>
-</div><style>
+    <div id="counter">0</div>
+</div>
+</div>
+
+<style>
 #progressbar{
-    width: 50px;
+    width: 0px;
     height: 30px;
     background-color: #00274C;
     color: white;
     text-align: center;
-    border-radius: 10px;
-}</style>
+}
+#container{
+    width: 500px;
+    height: 33px;
+    border-style: solid;
+}
+</style>
