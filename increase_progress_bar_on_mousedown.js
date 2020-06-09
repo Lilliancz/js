@@ -2,37 +2,52 @@
 
 Qualtrics.SurveyEngine.addOnload(function()
 {
-	
-	
 // many thanks to ZiNNED on stackoverflow for the template
 //https://stackoverflow.com/questions/24307514/while-mousedown-first-slowly-decrease-number-then-increase-decreasing-speed-j
-    var counter = 50;
+    var counter = 0;
+	var myWidth = 0;
     var myTimeout = null;
     var myInterval = null;
 
-	document.getElementById("mybutton").addEventListener("mousedown", increaseCounter);
-	
+	document.getElementById("myButton").addEventListener("mousedown", increaseCounter);
 	
 	function increaseCounter() {
-        counter++;
-        document.getElementById("counter").innerHTML = counter;
-		document.getElementById("progressbar").style.width = counter+"px";
+		if (counter <100){
+			counter++;
+			document.getElementById("counter").innerHTML = counter;
+			myWidth = counter *5;
+			document.getElementById("progressbar").style.width = myWidth+"px";
 
-        myTimeout = setTimeout(function () {
-        myInterval = setInterval(function () {
-                counter++;
-        		document.getElementById("counter").innerHTML = counter;			
-				document.getElementById("progressbar").style.width = counter+"px";
-            }, 75);
-        }, 500);
+			myTimeout = setTimeout(function () {
+			myInterval = setInterval(function () {
+				 	if (counter <100){
+						counter++;
+						document.getElementById("counter").innerHTML = counter;			
+						myWidth = counter *5;
+						document.getElementById("progressbar").style.width = myWidth+"px";
+					}
+				}, 75);
+			}, 500);
+		}
     }
 	
-	document.getElementById("mybutton").addEventListener("mouseup", stopCounter);
-	document.getElementById("mybutton").addEventListener("mouseleave", stopCounter);
+	document.getElementById("myButton").addEventListener("mouseup", stopCounter);
+	document.getElementById("myButton").addEventListener("mouseleave", stopCounter);
 	
 	function stopCounter() {
         clearTimeout(myTimeout);
         clearInterval(myInterval);
 	}
+	
+	
+	document.getElementById("clearButton").addEventListener("mousedown", startOver);
+	
+	function startOver() {
+		counter = 0;
+		document.getElementById("counter").innerHTML = counter;			
+		myWidth = counter *5;
+		document.getElementById("progressbar").style.width = myWidth+"px";
+	}
+	
   
 });
