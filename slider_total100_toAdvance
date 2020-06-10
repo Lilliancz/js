@@ -1,42 +1,35 @@
 // in order to use Qualtrics scoring for a constant sum question in Qualtrics, you have to use a slider question 
 // and convert it to a constant sum Q yourself. Constant sum questions can't be used in scoring. 
 // This example hides the next button unless the total is 100.
+// the div with id="error" must be included somewhere for the error message to show
 
 Qualtrics.SurveyEngine.addOnload(function()
 {
 	/*Place your JavaScript here to run when the page loads*/
 var x = init();	
 var qid = this.questionId;
-//alert(qid);	
-	
-function touchHandler(event)
+
+
+	function touchHandler(event)
 {
-//here, the 1,2,3,4 sometimes is a different set of numbers if you aren't starting from scratch
-//I have 4 slider choices in this example
-	var id1= qid +'~1~true-result';
-	var id2= qid +'~2~true-result';
-	var id3= qid+'~3~true-result';
-	var id4= qid+'~4~true-result';
-	//alert(id1);
-	//alert(this.questionId);
+//jquery selects all the inputs from the slider on the page
+	var id1 = parseInt(jQuery("#"+qid+" input.ResultsInput").eq(0).val());
+	var id2 = parseInt(jQuery("#"+qid+" input.ResultsInput").eq(1).val());
+	var id3 = parseInt(jQuery("#"+qid+" input.ResultsInput").eq(2).val());
+	var id4 = parseInt(jQuery("#"+qid+" input.ResultsInput").eq(3).val());
+
+	var choices = [id1,id2,id3,id4];
+
+//this sums the answers and skips over undefined ones
+            var sum =  0;
+            for(var i=0;i<choices.length;i++)
+              {                  
+                if(isNaN(choices[i])){
+                continue;
+                 }
+                  sum += Number(choices[i]);
+               }
 	
-//alert(document.getElementById(id1).value);
-	var choices = [parseInt(document.getElementById(id1).value),
-			  parseInt(document.getElementById(id2).value),
-			  parseInt(document.getElementById(id3).value),
-			  parseInt(document.getElementById(id4).value)];
-
-  var sum =  0;
-  //skip over undefined choices when calculating sum
-  for(var i=0;i<choices.length;i++) {                  
-      if(isNaN(choices[i])) {
-        continue;
-      }
-      sum += Number(choices[i]);
-  }
-
-	//alert(sum);
-
 	if (sum==100){
 	$('NextButton').show();
 	document.getElementById('error').innerHTML = "";
@@ -48,8 +41,6 @@ $('NextButton').hide();
 
 }
 	
-  
-//these encompass many of the touchscreen and mouse clicks to trigger the calculations
 function init() 
 {
     document.addEventListener("touchstart", touchHandler, true);
@@ -62,4 +53,16 @@ function init()
 }	
 	
 	
+});
+
+Qualtrics.SurveyEngine.addOnReady(function()
+{
+	/*Place your JavaScript here to run when the page is fully displayed*/
+
+});
+
+Qualtrics.SurveyEngine.addOnUnload(function()
+{
+	/*Place your JavaScript here to run when the page is unloaded*/
+
 });
