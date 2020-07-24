@@ -1,0 +1,39 @@
+//hide question on same page if slider is answered in a certain way
+
+
+Qualtrics.SurveyEngine.addOnload(function()
+{
+	/*Place your JavaScript here to run when the page loads*/
+var x = init();	
+var qid = this.questionId;
+
+
+	function touchHandler(event)
+{
+//jquery selects all the inputs from the slider on the page
+	var id1 = parseInt(jQuery("#"+qid+" input.ResultsInput").eq(0).val());
+
+	
+//QID230 is the question you are going to hide  
+	if (id1){
+	document.getElementById('QID230').style.display = "block";
+		}
+else{
+	document.getElementById('QID230').style.display = "none";
+}
+
+}
+	
+function init() 
+{
+    document.addEventListener("touchstart", touchHandler, true);
+    document.addEventListener("touchmove", touchHandler, true);
+    document.addEventListener("touchend", touchHandler, true);
+    document.addEventListener("touchcancel", touchHandler, true);   
+    document.addEventListener("mousemove", touchHandler, true);    
+    document.addEventListener("mousedown", touchHandler, true);    
+    document.addEventListener("mouseup", touchHandler, true);    
+}	
+	
+	
+});
