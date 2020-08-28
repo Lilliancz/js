@@ -1,0 +1,48 @@
+Qualtrics.SurveyEngine.addOnload(function()
+{
+	/*Place your JavaScript here to run when the page loads*/
+
+});
+
+Qualtrics.SurveyEngine.addOnReady(function()
+{
+    $('NextButton').hide(); 
+
+    var numSliders = jQuery(".ResultsInput").length;
+
+    var slider1;
+    var slider2;
+    var slider3;
+
+	if (numSliders == 1){
+		jQuery(".track").eq(0).click(function(){
+                $('NextButton').show(); 
+	    });
+	}
+	
+	if (numSliders == 2){
+
+		//check first slider
+		jQuery(".track").eq(0).click(function(){
+			slider1 = 1 ; 
+			if (slider1 == 1 & slider2 == 1){
+					$('NextButton').show(); 
+			}
+		});
+
+		//check second slider
+		jQuery(".track").eq(1).click(function(){
+			slider2 = 1 ;
+			if (slider1 == 1 & slider2 == 1){
+				$('NextButton').show(); 
+			}
+		});
+	}
+	
+	if (numSliders == 3){
+
+		//check first slider
+		jQuery(".track").eq(0).click(function(){
+			slider1 = 1 ; 
+			if (slider1 == 1 & slider2 == 1& slider3 == 1){
+				$('NextButton').show(); 
