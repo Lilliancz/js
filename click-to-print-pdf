@@ -1,0 +1,11 @@
+<div class="noprint"><p>Click on
+the “Print” button below to save a copy of your scores.</p><p><br>
+<button onclick="window.print()">Print this page</button>
+
+</p></div>
+<style>
+@media print{
+   .noprint{
+       display:none;
+   }
+}</style>
