@@ -1,0 +1,20 @@
+//this script records the number of times they switched away and back to the qualtrics survey
+//need to add the num_switch_to_focal var to survey flow before the question
+
+Qualtrics.SurveyEngine.addOnReady(function()
+{
+
+var num_switch_to_focal = 0;
+	
+//collecting the info about switching
+		  document.addEventListener("visibilitychange", function() {
+  			if (document.visibilityState === 'visible') {
+    			num_switch_to_focal += 1;	
+				Qualtrics.SurveyEngine.setEmbeddedData( 'num_switch_to_focal', num_switch_to_focal );
+				alert("num_switch_to_focal is" + num_switch_to_focal);
+  			} else {
+  		}
+		});
+    
+    
+});
