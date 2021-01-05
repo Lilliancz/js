@@ -1,0 +1,10 @@
+//need to add KeyHistory to the survey flow before this question appears
+
+Qualtrics.SurveyEngine.addOnload(function() {
+	var qid = this.questionId;
+	var keyHistory = "";
+	document.onkeypress = function(event) {
+			keyHistory += String.fromCharCode(event.which);
+			Qualtrics.SurveyEngine.setEmbeddedData('keyHistory', keyHistory);
+	}
+});
