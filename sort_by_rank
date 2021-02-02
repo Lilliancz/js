@@ -1,0 +1,55 @@
+//Qualtrics javascript for sorting by rank. remember to embed survey flow vars
+
+Qualtrics.SurveyEngine.addOnload(function()
+{
+	/*Place your JavaScript here to run when the page loads*/
+
+var q1 = parseInt("${q://QID2/ChoiceNumericEntryValue/1}");
+var q2 = parseInt("${q://QID2/ChoiceNumericEntryValue/55}");
+var q3 = parseInt("${q://QID2/ChoiceNumericEntryValue/56}");
+var q4 = parseInt("${q://QID2/ChoiceNumericEntryValue/57}");
+
+var dict = { 'q1': q1,
+    'q2': q2,
+    'q3': q3,
+    'q4': q4,
+		   }
+
+//https://stackoverflow.com/questions/25500316/sort-a-dictionary-by-value-in-javascript
+// Create items array
+var items = Object.keys(dict).map(function(key) {
+  return [key, dict[key]];
+});
+
+// Sort the array based on the second element
+items.sort(function(first, second) {
+  return second[1] - first[1];
+});
+
+// Create a new array with only the first 4 items
+console.log(items.slice(0, 4));
+	
+Qualtrics.SurveyEngine.setEmbeddedData("rank1", items[0][0]);
+Qualtrics.SurveyEngine.setEmbeddedData("rank2", items[1][0]);
+Qualtrics.SurveyEngine.setEmbeddedData("rank3", items[2][0]);
+Qualtrics.SurveyEngine.setEmbeddedData("rank4", items[3][0]);
+		
+Qualtrics.SurveyEngine.setEmbeddedData("rank1value", items[0][1]);
+Qualtrics.SurveyEngine.setEmbeddedData("rank2value", items[1][1]);
+Qualtrics.SurveyEngine.setEmbeddedData("rank3value", items[2][1]);
+Qualtrics.SurveyEngine.setEmbeddedData("rank4value", items[3][1]);
+
+//Result
+});
+
+Qualtrics.SurveyEngine.addOnReady(function()
+{
+	/*Place your JavaScript here to run when the page is fully displayed*/
+
+});
+
+Qualtrics.SurveyEngine.addOnUnload(function()
+{
+	/*Place your JavaScript here to run when the page is unloaded*/
+
+});
