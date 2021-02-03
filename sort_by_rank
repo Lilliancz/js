@@ -15,6 +15,12 @@ var dict = { 'q1': q1,
     'q4': q4,
 		   }
 
+var textdict = { 'q1': 'My organization does not really focus specifically on issues of employee commitment and morale. Little attention is paid to employee development. Other things take priority over attracting and retaining the very best talent. Getting the job done is most important.',
+    'q2': 'My organization focuses on providing benefits, promotions, and financial incentives to attract and retain talent. It fosters commitment by providing a good work environment, flexible working hours, and trying to respond to employee needs.&nbsp;People remain in this organization at least partly because of the benefits they receive and the work climate.',
+    'q3': 'My organization fosters employee commitment by providing coaches and mentors to&nbsp;assist with personal development.&nbsp;Information sharing and opportunities for increased responsibility are common. People have a chance to build strong social networks, and they think of the workplace as fun and exciting. People remain in the organization at least partly because they feel that they are better for being an employee here.',
+    'q4': 'My organization emphasizes the profound purpose and meaningfulness of the work being done. Employees feel passionately about the objectives being pursued, and they view the outcomes as more significant than just the organization&rsquo;s or the employees&rsquo; success. People have a sense of personal calling, not just a job. People remain in the organization at least partly because they feel genuine love and passion for the work they are pursuing.',
+}
+
 //https://stackoverflow.com/questions/25500316/sort-a-dictionary-by-value-in-javascript
 // Create items array
 var items = Object.keys(dict).map(function(key) {
@@ -38,6 +44,15 @@ Qualtrics.SurveyEngine.setEmbeddedData("rank1value", items[0][1]);
 Qualtrics.SurveyEngine.setEmbeddedData("rank2value", items[1][1]);
 Qualtrics.SurveyEngine.setEmbeddedData("rank3value", items[2][1]);
 Qualtrics.SurveyEngine.setEmbeddedData("rank4value", items[3][1]);
+	
+
+Qualtrics.SurveyEngine.setEmbeddedData("rank1text", textdict[items[0][0]]);
+Qualtrics.SurveyEngine.setEmbeddedData("rank2text", textdict[items[1][0]]);
+Qualtrics.SurveyEngine.setEmbeddedData("rank3text", textdict[items[2][0]]);
+Qualtrics.SurveyEngine.setEmbeddedData("rank4text", textdict[items[3][0]]);
+	
+	
+	
 
 //Result
 });
