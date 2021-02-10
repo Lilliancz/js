@@ -1,0 +1,53 @@
+Qualtrics.SurveyEngine.addOnload(function()
+{
+		google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawAverage);
+	
+	
+	function drawAverage() {
+	/*Place your JavaScript here to run when the page loads*/
+       var data = new google.visualization.DataTable();
+       data.addColumn('string', 'Series'); // Implicit domain column.
+       data.addColumn('number', 'Asking Score'); // Implicit data column.
+       data.addColumn({type:'number', role:'interval'});
+       data.addColumn({type:'number', role:'interval'});
+		data.addColumn({type:'string', role:'annotation'}); // annotation role col.
+       data.addColumn('number', 'Giving Score');
+       data.addColumn({type:'number', role:'interval'});
+       data.addColumn({type:'number', role:'interval'});
+		data.addColumn({type:'string', role:'annotation'}); // annotation role col.
+
+       data.addRows([
+         ['You',parseFloat("${e://Field/ask}"), parseFloat("${e://Field/ask}"),parseFloat("${e://Field/ask}"),"${e://Field/ask}",   parseFloat("${e://Field/give}"), parseFloat("${e://Field/give}"), parseFloat("${e://Field/give}"),"${e://Field/give}"],
+         ['Average of Working Adults',  2.53144, 1.552872, 3.510008,"2.53",3.20776,2.281654,4.133866,"3.21"]
+       ]);
+
+       var chart = new google.visualization.BarChart(
+                document.getElementById('visualization'));
+       chart.draw(data,
+				  {annotations: {
+     textStyle: {
+         color: 'black',
+         fontSize: 11,
+     },
+     alwaysOutside: false
+},width: 600, height: 500, title: 'Overall Asking and Giving Scores',colors: ['#e5ae5e', '#98c8d2'],legend: { position: 'top'},hAxis: {
+          title: 'Score (+/- 1 SD)',
+          minValue: 1,
+          ticks: [1,2,3,4,5,6,7]
+        },});
+	}	
+});
+
+
+Qualtrics.SurveyEngine.addOnReady(function()
+{
+	/*Place your JavaScript here to run when the page is fully displayed*/
+
+});
+
+Qualtrics.SurveyEngine.addOnUnload(function()
+{
+	/*Place your JavaScript here to run when the page is unloaded*/
+
+});
