@@ -1,0 +1,71 @@
+Qualtrics.SurveyEngine.addOnload(function()
+{
+	/*Place your JavaScript here to run when the page loads*/
+	google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawAverage);
+	
+	
+	function drawAverage() {
+	/*Place your JavaScript here to run when the page loads*/
+       var data = new google.visualization.DataTable();
+       data.addColumn('string', 'Series'); // Implicit domain column.
+       data.addColumn('number', 'Self-Score'); // Implicit data column.
+		data.addColumn({type:'string', role:'annotation'}); // annotation role col.
+       data.addColumn('number', 'Your Leaders');
+		data.addColumn({type:'string', role:'annotation'}); // annotation role col.
+       data.addColumn('number', 'Benchmark Score'); // Implicit data column.
+		data.addColumn({type:'string', role:'annotation'}); // annotation role col.
+
+       data.addRows([
+         ['Help other people flourish without expecting a payback',parseFloat("${e://Field/Energizer1.1}"),"${e://Field/Energizer1.1}", parseFloat("${e://Field/Energizer1.2}"),"${e://Field/Energizer1.2}",4.74,"4.74"],
+         ['Express gratitude and humility',parseFloat("${e://Field/Energizer2.1}"),"${e://Field/Energizer2.1}", parseFloat("${e://Field/Energizer2.2}"),"${e://Field/Energizer2.2}",5.37,"5.37"],
+         ['Instill confidence and self-efficacy in others',parseFloat("${e://Field/Energizer3.1}"),"${e://Field/Energizer3.1}", parseFloat("${e://Field/Energizer3.2}"),"${e://Field/Energizer3.2}",5.47,"5.47"],
+         ['Smile frequently',parseFloat("${e://Field/Energizer4.1}"),"${e://Field/Energizer4.1}", parseFloat("${e://Field/Energizer4.2}"),"${e://Field/Energizer4.2}",5.88,"5.88"],
+         ['Forgive weaknesses in others',parseFloat("${e://Field/Energizer5.1}"),"${e://Field/Energizer5.1}", parseFloat("${e://Field/Energizer5.2}"),"${e://Field/Energizer5.2}",5.57,"5.57"],
+         ['Invest in developing personal relationships',parseFloat("${e://Field/Energizer6.1}"),"${e://Field/Energizer6.1}", parseFloat("${e://Field/Energizer6.2}"),"${e://Field/Energizer6.2}",5.14,"5.14"],
+         ['Share plum assignments and recognize others',parseFloat("${e://Field/Energizer7.1}"),"${e://Field/Energizer7.1}", parseFloat("${e://Field/Energizer7.2}"),"${e://Field/Energizer7.2}",5.48,"5.48"],
+         ['Listen actively and empathetically',parseFloat("${e://Field/Energizer8.1}"),"${e://Field/Energizer8}", parseFloat("${e://Field/Energizer8.2}"),"${e://Field/Energizer8.2}",5.60,"5.60"],
+         ['Are problem solvers',parseFloat("${e://Field/Energizer9.1}"),"${e://Field/Energizer9.1}",parseFloat("${e://Field/Energizer9.2}"),"${e://Field/Energizer9.2}",5.96,"5.96"],
+         ['Mostly see opportunities',parseFloat("${e://Field/Energizer10.1}"),"${e://Field/Energizer10.1}", parseFloat("${e://Field/Energizer10.2}"),"${e://Field/Energizer10.2}",5.93,"5.93"],
+         ['Clarify meaningfulness and inspire others',parseFloat("${e://Field/Energizer11.1}"),"${e://Field/Energizer11.1}", parseFloat("${e://Field/Energizer11.2}"),"${e://Field/Energizer11.2}",5.79,"5.79"],
+         ['Are trusting and trustworthy',parseFloat("${e://Field/Energizer12.1}"),"${e://Field/Energizer12.1}", parseFloat("${e://Field/Energizer12.2}"),"${e://Field/Energizer12.2}",5.90,"5.90"],
+         ['Are genuine and authentic',parseFloat("${e://Field/Energizer13.1}"),"${e://Field/Energizer13.1}", parseFloat("${e://Field/Energizer13.2}"),"${e://Field/Energizer13.2}",5.83,"5.83"],
+         ['Motivate others to exceed performance standards',parseFloat("${e://Field/Energizer14.1}"),"${e://Field/Energizer14.1}", parseFloat("${e://Field/Energizer14.2}"),"${e://Field/Energizer14.2}",5.89,"5.89"],
+         ['Mobilize positive energizers who can motivate others',parseFloat("${e://Field/Energizer15.1}"),"${e://Field/Energizer15.1}", parseFloat("${e://Field/Energizer15.2}"),"${e://Field/Energizer15.2}",5.88,"5.88"]
+		    ]);
+       var chart = new google.visualization.BarChart(
+                document.getElementById('graphs'));
+       chart.draw(data,
+		{
+		   annotations: {
+					 textStyle: {
+						 color: 'black',
+						 fontSize: 10,
+					 },
+						 alwaysOutside: false
+			},
+		   width:650, 
+		   height: 1200, 
+		   title: 'Positive Energizer Ratings',
+		   colors: ['#00274C', '#FFCB05',"#989C97","#DDC497"],
+		   legend: { position: 'top',maxLines: 3},
+		   hAxis: {
+					minValue: 1,
+					ticks: [1,2,3,4,5,6,7,8,9,10]
+			},
+		   chartArea: {'width': '50%', 'height': '90%'},
+	   });
+	}	
+});
+
+Qualtrics.SurveyEngine.addOnReady(function()
+{
+	/*Place your JavaScript here to run when the page is fully displayed*/
+
+});
+
+Qualtrics.SurveyEngine.addOnUnload(function()
+{
+	/*Place your JavaScript here to run when the page is unloaded*/
+
+});
