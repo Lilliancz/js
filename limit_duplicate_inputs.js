@@ -23,6 +23,7 @@ Qualtrics.SurveyEngine.addOnload(function()
 		var inputnum = inputs.split(",");
 		var dup = 0;
 		
+		//https://dev.to/huyddo/find-duplicate-or-repeat-elements-in-js-array-3cl3
 		function count_duplicate(a){
 		 let counts = {}
 
