@@ -1,0 +1,30 @@
+Qualtrics.SurveyEngine.addOnload(function()
+{
+	/*Place your JavaScript here to run when the page loads*/
+
+	//grab the questionID for this particular dropdown
+	var qid = this.questionId;
+	//alert(qid);
+	
+	//when calculate button is clicked, do something
+	var el = document.getElementById("calculate");
+
+	el.addEventListener("click", function(){
+		//grab the dropdown value. the qid changes for each loop, so use the qid var
+		var quantity = document.getElementById('QR~'+qid).value;
+		
+		//add you calculations here
+		var retailer = (16-3/2*quantity-1)*quantity;
+
+		//set the in-page values of the table here:
+		document.getElementById('quantity').innerHTML = quantity;
+		document.getElementById('retailer').innerHTML = retailer;
+		document.getElementById('wholesaler').innerHTML = quantity;
+		document.getElementById('donation').innerHTML = quantity;
+		
+		//show the table after clicking the calculate button
+		document.getElementById('calctable').style.display = "block";
+
+	});
+
+});
