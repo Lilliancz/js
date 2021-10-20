@@ -1,0 +1,29 @@
+Qualtrics.SurveyEngine.addOnload(function()
+{
+	/*Place your JavaScript here to run when the page loads*/	
+		//this code is adapted from https://community.qualtrics.com/XMcommunity/discussion/10861/custom-code-for-matrix-question-custom-validation-for-set-number-of-items-for-each-individual-column
+		//cheers to rondev!
+	
+	//this code grabs the number of checkboxes checked across 2 columns (class c4 and c5 are the first 2 columns) 
+	//it also hides the next button and displays a previously hidden div with an error message based on a limit 
+	
+	var QID = this.questionId ;
+		jQuery("#" + QID + " input[type='checkbox']").on("click", function() {
+			
+			   var count1 = jQuery("#" + QID + " td.c4 input[type='checkbox']:checked").length;
+			   var count2 = jQuery("#" + QID + " td.c5 input[type='checkbox']:checked").length;
+			   var totalcount = count1+count2;
+			   console.log(totalcount);
+			
+				if(totalcount>4){
+					$('NextButton').hide();
+					document.getElementById('error').style.display = "block";
+				}
+				if(totalcount<=4){
+					$('NextButton').show();
+					document.getElementById('error').style.display = "none";
+				}
+		});	
+
+	
+});
