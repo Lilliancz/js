@@ -1,0 +1,45 @@
+//in a split rating task, the subject has to choose an option on the left 
+// and an option on the right, but they cannot switch back and forth. 
+// The left must precede the right.
+// therefore, when they click on the left column, the radio buttons must fill up
+// and when they click the right column, buttons fill down
+
+Qualtrics.SurveyEngine.addOnload(function()
+{
+	/*Place your JavaScript here to run when the page loads*/
+
+
+		var QID = this.questionId;
+
+		jQuery("#" + QID + "  input[type='radio']").on("click", function() {
+			var indexA = jQuery("#" + QID + " td.c4 input[type='radio']").index(this);
+
+			jQuery("#" + QID + " td.c4 input[type='radio']").slice(0, indexA + 1).prop('checked', true); // Check all radio buttons before and including the clicked one
+
+			var arrayA = jQuery("#" + QID + " td.c4 input[type='radio']").map(function () {
+				return this.checked ? 1 : 0;
+			}).get();
+			
+			var arrayAlast = arrayA.lastIndexOf(1);
+
+			console.log("A is " + arrayAlast); // Log the index of the last checked radio button in c4 group
+
+			Qualtrics.SurveyEngine.setEmbeddedData("ChoiceA", arrayAlast);
+			
+			
+		  var indexB = jQuery("#" + QID + " td.c5 input[type='radio']").index(this);
+			jQuery("#" + QID + " td.c5 input[type='radio']").slice(indexB).prop('checked', true); // Check all radio buttons before and including the clicked one
+
+			var arrayB = jQuery("#" + QID + " td.c5 input[type='radio']").map(function () {
+				return this.checked ? 1 : 0;
+			}).get();
+			
+			var arrayBfirst = arrayB.indexOf(1);
+
+			console.log("B is " + arrayBfirst); // Log the index of the first checked radio button in c5 group
+			Qualtrics.SurveyEngine.setEmbeddedData("ChoiceB", arrayBfirst);
+
+		});
+	
+
+});
