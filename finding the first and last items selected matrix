@@ -1,0 +1,21 @@
+Qualtrics.SurveyEngine.addOnload(function()
+{
+	/*Place your JavaScript here to run when the page loads*/
+	//grab the values that were selected for the first column
+	var ASelected = "${q://QID4/ChoiceGroup/SelectedChoicesForAnswer/1}";
+	var BSelected = "${q://QID4/ChoiceGroup/SelectedChoicesForAnswer/3}";
+	
+	//place the values into an array
+	ASelected = ASelected.split(', ');
+	BSelected = BSelected.split(', ');
+	
+	//select the last value of the first column
+	var lastA = ASelected[ASelected.length-1];
+	Qualtrics.SurveyEngine.setEmbeddedData("lastA", lastA);
+	console.log("A is " +lastA);
+
+    //select the first value of the second column
+	var firstB = BSelected[0];
+	Qualtrics.SurveyEngine.setEmbeddedData("firstB", firstB);
+	console.log("B is " +firstB);
+});
